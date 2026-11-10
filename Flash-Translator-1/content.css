@@ -1,0 +1,997 @@
+/* content.css — Pure Colorless Frosted Glass (image_4e6fde.jpg) + Champagne Gold (#e6cfa5) Outlines & Cursor-Tracking 3D Brain */
+
+@keyframes ds-brain-idle-hover {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1.2deg);
+  }
+  28% {
+    transform: translateY(-4.5px) rotate(0.9deg);
+  }
+  55% {
+    transform: translateY(-6.5px) rotate(1.5deg);
+  }
+  78% {
+    transform: translateY(-2.5px) rotate(-0.6deg);
+  }
+}
+
+@keyframes ds-bolt-hover-vertical {
+  0%, 100% {
+    transform: translateY(0px) scale(1.12);
+    filter: drop-shadow(0 2px 5px rgba(250, 204, 21, 0.55));
+  }
+  50% {
+    transform: translateY(-9px) scale(1.22);
+    filter: drop-shadow(0 8px 14px rgba(250, 204, 21, 0.95));
+  }
+}
+
+@keyframes ds-brain-think-pulse {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(2px) scale(1.04);
+  }
+}
+
+#ds-layman-floating-icon {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+  max-width: 64px !important;
+  min-height: 64px !important;
+  max-height: 64px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  display: block;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  user-select: none !important;
+  pointer-events: auto !important;
+}
+
+#ds-layman-floating-icon::after {
+  display: none !important;
+  content: none !important;
+}
+
+#ds-layman-floating-icon .ds-brain-idle-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 64px !important;
+  height: 64px !important;
+  pointer-events: none !important;
+  animation: ds-brain-idle-hover 2.4s ease-in-out infinite;
+}
+
+#ds-layman-floating-icon.ds-thinking .ds-brain-idle-wrap {
+  animation: ds-brain-think-pulse 0.6s ease-in-out infinite;
+}
+
+#ds-layman-floating-icon .ds-layer-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  pointer-events: none !important;
+}
+
+@keyframes ds-eyes-blink {
+  0%, 93%, 99%, 100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.05);
+  }
+}
+
+#ds-layman-floating-icon .ds-brain-rotator {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 64px !important;
+  height: 64px !important;
+  transform-origin: 52% 56% !important;
+  transition: transform 0.08s ease-out;
+  pointer-events: none !important;
+}
+
+#ds-layman-floating-icon .ds-brain-base {
+  z-index: 2 !important;
+}
+
+/* Eyes stay locked in their exact placement on the brain and blink every 5 seconds */
+#ds-layman-floating-icon .ds-brain-eyes {
+  z-index: 3 !important;
+  transform-origin: 31.6% 67.4% !important;
+  animation: ds-eyes-blink 5s ease-in-out infinite;
+}
+
+#ds-layman-floating-icon .ds-bolt {
+  z-index: 5 !important;
+  opacity: 0;
+  transform: translateY(4px) scale(0.75);
+  transition: opacity 0.15s ease;
+}
+
+#ds-layman-floating-icon.ds-thinking .ds-bolt {
+  opacity: 1;
+}
+
+#ds-layman-floating-icon.ds-thinking .ds-bolt-left {
+  animation: ds-bolt-hover-vertical 0.52s ease-in-out infinite;
+  animation-delay: 0.08s;
+}
+
+#ds-layman-floating-icon.ds-thinking .ds-bolt-center {
+  animation: ds-bolt-hover-vertical 0.52s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+#ds-layman-floating-icon.ds-thinking .ds-bolt-right {
+  animation: ds-bolt-hover-vertical 0.52s ease-in-out infinite;
+  animation-delay: 0.16s;
+}
+
+/* Sleeping / Minimized State: 3D Blue Sleep Facemask Over Eyes + Vertical Hovering 3D Z's */
+@keyframes ds-sleep-z-hover {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.22));
+  }
+  50% {
+    transform: translateY(-7px) scale(1.10);
+    filter: drop-shadow(0 6px 10px rgba(15, 23, 42, 0.32));
+  }
+}
+
+#ds-layman-floating-icon .ds-sleep-mask {
+  z-index: 4 !important;
+  opacity: 0;
+  pointer-events: none !important;
+  transition: opacity 0.15s ease;
+}
+
+#ds-layman-floating-icon .ds-sleep-z {
+  z-index: 5 !important;
+  opacity: 0;
+  transform: translateY(3px) scale(0.85);
+  pointer-events: none !important;
+  transition: opacity 0.15s ease;
+}
+
+/* When minimized (.ds-sleeping): hide blinking eyes, show 3D sleep mask, and animate the hovering Z's while keeping the idle hover on .ds-brain-idle-wrap */
+#ds-layman-floating-icon.ds-sleeping .ds-brain-eyes {
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+#ds-layman-floating-icon.ds-sleeping .ds-sleep-mask {
+  opacity: 1 !important;
+}
+
+#ds-layman-floating-icon.ds-sleeping .ds-sleep-z {
+  opacity: 1 !important;
+}
+
+#ds-layman-floating-icon.ds-sleeping .ds-sleep-z1 {
+  animation: ds-sleep-z-hover 1.15s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+#ds-layman-floating-icon.ds-sleeping .ds-sleep-z2 {
+  animation: ds-sleep-z-hover 1.15s ease-in-out infinite;
+  animation-delay: 0.28s;
+}
+
+/* ============================================================================
+   Notes-Tab Minimized State (.ds-notes-minimized):
+   5-Second Synchronized Loop:
+   - 0%..80% (0s..4.0s): Pencil writes down the 5 lines of the notepad while
+     the 3D blue glasses slowly slide down the brain's face.
+   - 80%..94% (4.0s..4.7s): Pencil pauses & lifts, the full page on the notepad
+     flips upward around the spiral rings, and the brain's glasses readjust!
+   - 94%..100% (4.7s..5.0s): Fresh blank page appears and pencil resets to top.
+   ============================================================================ */
+
+@keyframes ds-glasses-slip-and-adjust {
+  0% {
+    transform: translate3d(0px, 0px, 0) rotate(0deg);
+  }
+  80% {
+    transform: translate3d(-2.2px, 4.2px, 0) rotate(-6.5deg);
+  }
+  85% {
+    transform: translate3d(-2.2px, 4.2px, 0) rotate(-6.5deg);
+  }
+  93%, 100% {
+    transform: translate3d(0px, 0px, 0) rotate(0deg);
+  }
+}
+
+@keyframes ds-pencil-write-and-pause {
+  /* Line 1 */
+  0% { transform: translate3d(-6px, -6px, 0) rotate(-4deg); }
+  8% { transform: translate3d(-1px, -5.5px, 0) rotate(2deg); }
+  15% { transform: translate3d(-5.5px, -3.5px, 0) rotate(-4deg); }
+  /* Line 2 */
+  24% { transform: translate3d(0px, -3px, 0) rotate(2deg); }
+  31% { transform: translate3d(-5px, -1px, 0) rotate(-3deg); }
+  /* Line 3 */
+  40% { transform: translate3d(1px, -0.5px, 0) rotate(2deg); }
+  47% { transform: translate3d(-4px, 1.5px, 0) rotate(-3deg); }
+  /* Line 4 */
+  56% { transform: translate3d(1.5px, 2px, 0) rotate(2deg); }
+  63% { transform: translate3d(-3.5px, 3.5px, 0) rotate(-2deg); }
+  /* Line 5 */
+  72% { transform: translate3d(2px, 4px, 0) rotate(2deg); }
+  79% { transform: translate3d(0.5px, 4.5px, 0) rotate(0deg); }
+  /* Pause writing & lift off notepad while page flips (80%..94%) */
+  84%, 92% { transform: translate3d(4.5px, -5.5px, 0) rotate(12deg); }
+  /* Return to Line 1 after new blank page appears */
+  100% { transform: translate3d(-6px, -6px, 0) rotate(-4deg); }
+}
+
+@keyframes ds-lines-write-reveal {
+  0%, 3% {
+    opacity: 1;
+    clip-path: inset(0 0 42% 0);
+  }
+  16% {
+    opacity: 1;
+    clip-path: inset(0 0 34% 0);
+  }
+  32% {
+    opacity: 1;
+    clip-path: inset(0 0 26% 0);
+  }
+  48% {
+    opacity: 1;
+    clip-path: inset(0 0 18% 0);
+  }
+  64% {
+    opacity: 1;
+    clip-path: inset(0 0 10% 0);
+  }
+  79.5% {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0);
+  }
+  80%, 100% {
+    opacity: 0;
+    clip-path: inset(0 0 42% 0);
+  }
+}
+
+@keyframes ds-notepad-page-flip {
+  0%, 79.9% {
+    opacity: 0;
+    transform: perspective(160px) rotateX(0deg) scaleY(1);
+  }
+  80% {
+    opacity: 1;
+    transform: perspective(160px) rotateX(0deg) scaleY(1);
+  }
+  87% {
+    opacity: 1;
+    transform: perspective(160px) rotateX(78deg) scaleY(0.32) skewX(-9deg);
+    filter: brightness(1.08);
+  }
+  94%, 100% {
+    opacity: 0;
+    transform: perspective(160px) rotateX(135deg) scaleY(0.05) skewX(-14deg);
+  }
+}
+
+#ds-layman-floating-icon .ds-notes-glasses,
+#ds-layman-floating-icon .ds-notes-pad-base,
+#ds-layman-floating-icon .ds-notes-lines,
+#ds-layman-floating-icon .ds-notes-flip-sheet,
+#ds-layman-floating-icon .ds-notes-pencil {
+  opacity: 0;
+  pointer-events: none !important;
+}
+
+#ds-layman-floating-icon.ds-notes-minimized .ds-brain-rotator {
+  transform: translate3d(9px, -2px, 0) !important;
+}
+
+#ds-layman-floating-icon.ds-notes-minimized .ds-notes-glasses {
+  z-index: 4 !important;
+  opacity: 1 !important;
+  animation: ds-glasses-slip-and-adjust 5s ease-in-out infinite;
+}
+
+#ds-layman-floating-icon.ds-notes-minimized .ds-notes-pad-base {
+  z-index: 6 !important;
+  opacity: 1 !important;
+}
+
+#ds-layman-floating-icon.ds-notes-minimized .ds-notes-lines {
+  z-index: 7 !important;
+  animation: ds-lines-write-reveal 5s linear infinite;
+}
+
+#ds-layman-floating-icon.ds-notes-minimized .ds-notes-flip-sheet {
+  z-index: 8 !important;
+  transform-origin: 18% 66% !important;
+  animation: ds-notepad-page-flip 5s ease-in-out infinite;
+}
+
+#ds-layman-floating-icon.ds-notes-minimized .ds-notes-pencil {
+  z-index: 9 !important;
+  opacity: 1 !important;
+  transform-origin: 28% 72% !important;
+  animation: ds-pencil-write-and-pause 5s ease-in-out infinite;
+}
+
+/* "Send Home" Liquid Glass Pill Button Above the Brain (Replicating image_d3bbda.png) */
+#ds-send-home-btn {
+  position: absolute !important;
+  bottom: calc(100% + 8px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) scale(0.92);
+  min-width: 102px !important;
+  height: 30px !important;
+  padding: 0 16px !important;
+  border-radius: 9999px !important;
+  /* Exact 3D Liquid Glass Dome & Dark Refractive Meniscus Rim from image_d3bbda.png */
+  background: radial-gradient(ellipse 78% 72% at 50% 46%, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.90) 58%, rgba(226, 232, 240, 0.80) 86%, rgba(203, 213, 225, 0.88) 100%) !important;
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+  border: 1px solid rgba(30, 41, 59, 0.42) !important;
+  box-shadow:
+    inset 2.5px 1.5px 3.5px rgba(15, 23, 42, 0.42),
+    inset -2.5px -1.5px 3.5px rgba(15, 23, 42, 0.38),
+    inset 0 4px 7px rgba(255, 255, 255, 0.95),
+    inset 0 -3.5px 6px rgba(148, 163, 184, 0.48),
+    0 6px 14px rgba(15, 23, 42, 0.16) !important;
+  color: #1e2024 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  white-space: nowrap !important;
+  display: none;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  opacity: 0;
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.16s ease !important;
+}
+
+#ds-send-home-btn.ds-visible {
+  display: flex !important;
+  opacity: 1 !important;
+  transform: translateX(-50%) scale(1) !important;
+}
+
+#ds-send-home-btn:hover {
+  transform: translateX(-50%) translateY(-1px) scale(1.04) !important;
+  box-shadow:
+    inset 2.5px 1.5px 3.5px rgba(15, 23, 42, 0.45),
+    inset -2.5px -1.5px 3.5px rgba(15, 23, 42, 0.40),
+    inset 0 4px 8px rgba(255, 255, 255, 1),
+    inset 0 -3.5px 6px rgba(148, 163, 184, 0.52),
+    0 8px 18px rgba(15, 23, 42, 0.22) !important;
+}
+
+#ds-layman-curve-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483645 !important;
+  pointer-events: none !important;
+  overflow: visible !important;
+}
+
+/* Pure Colorless Frosted Glass Chat Box (Modeled on image_4e6fde.jpg) + Champagne Gold (#e6cfa5) Outlines ONLY */
+#ds-layman-chat-sidebar {
+  position: fixed !important;
+  top: 2vh;
+  bottom: 2vh;
+  right: 1.5vw;
+  width: clamp(270px, 28vw, 440px);
+  max-width: calc(100vw - 3vw);
+  max-height: 96vh;
+  z-index: 2147483646 !important;
+  /* Pure colorless white/clear frosted glass shader — zero gold tint inside the glass body */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0.24) 100%) !important;
+  backdrop-filter: blur(20px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+  color: #0f172a !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  border-radius: 24px;
+  /* Champagne Gold (#e6cfa5) Outline + 3D Pure White Glass Rim Highlights from image_4e6fde.jpg */
+  border: 1.5px solid #e6cfa5 !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.90),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.55),
+    inset 2px 0 4px rgba(255, 255, 255, 0.65),
+    inset -2px 0 4px rgba(255, 255, 255, 0.65),
+    0 16px 40px rgba(15, 23, 42, 0.12) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif !important;
+  opacity: 0;
+  pointer-events: none;
+  isolation: isolate !important;
+  box-sizing: border-box !important;
+}
+
+#ds-layman-chat-sidebar.ds-dock-left {
+  left: 1.5vw;
+  right: auto;
+}
+
+#ds-layman-chat-sidebar.ds-dock-right {
+  right: 1.5vw;
+  left: auto;
+}
+
+#ds-layman-chat-sidebar.ds-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+#ds-layman-chat-sidebar.ds-open * {
+  pointer-events: auto;
+}
+
+/* Scrollbar with ZERO background behind it (only the floating Champagne Gold scrollbar thumb) */
+#ds-layman-chat-sidebar ::-webkit-scrollbar,
+.ds-chat-messages::-webkit-scrollbar,
+.ds-highlighted-quote::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+#ds-layman-chat-sidebar ::-webkit-scrollbar-track,
+.ds-chat-messages::-webkit-scrollbar-track,
+.ds-highlighted-quote::-webkit-scrollbar-track,
+#ds-layman-chat-sidebar ::-webkit-scrollbar-track-piece,
+.ds-chat-messages::-webkit-scrollbar-track-piece,
+.ds-highlighted-quote::-webkit-scrollbar-track-piece,
+#ds-layman-chat-sidebar ::-webkit-scrollbar-corner {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#ds-layman-chat-sidebar ::-webkit-scrollbar-button,
+.ds-chat-messages::-webkit-scrollbar-button,
+.ds-highlighted-quote::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+#ds-layman-chat-sidebar ::-webkit-scrollbar-thumb,
+.ds-chat-messages::-webkit-scrollbar-thumb,
+.ds-highlighted-quote::-webkit-scrollbar-thumb {
+  background: #e6cfa5 !important;
+  border-radius: 999px !important;
+  border: none !important;
+}
+
+#ds-layman-chat-sidebar ::-webkit-scrollbar-thumb:hover,
+.ds-chat-messages::-webkit-scrollbar-thumb:hover,
+.ds-highlighted-quote::-webkit-scrollbar-thumb:hover {
+  background: #dfc599 !important;
+}
+
+/* Pure Clear Glass Header with Champagne Gold Outline Divider */
+.ds-chat-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: clamp(10px, 1.5vh, 14px) clamp(12px, 1.5vw, 16px) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.16) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1.5px solid #e6cfa5 !important;
+  box-shadow: inset 0 1.5px 3px rgba(255, 255, 255, 0.85) !important;
+  flex-shrink: 0 !important;
+}
+
+.ds-chat-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+}
+
+.ds-chat-brand-icon {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  border-radius: 11px !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.18) 100%) !important;
+  border: 1.5px solid #e6cfa5 !important;
+  box-shadow: inset 0 1.5px 3px rgba(255, 255, 255, 0.9) !important;
+  padding: 2px !important;
+  box-sizing: border-box !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+
+.ds-chat-title {
+  font-size: clamp(12px, 1.1vw, 14px) !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85) !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.ds-chat-subtitle {
+  font-size: clamp(10px, 0.9vw, 11px) !important;
+  color: #475569 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600 !important;
+  margin: 2px 0 0 0 !important;
+  line-height: 1.2 !important;
+}
+
+.ds-chat-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Pure Clear Glass Notes, Back Arrow, Minimize & Close Buttons with Champagne Gold Outline */
+.ds-chat-close-btn,
+.ds-chat-minimize-btn,
+.ds-chat-notes-btn,
+.ds-notes-back-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.18) 100%) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1.5px solid #e6cfa5 !important;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.90),
+    inset 0 -1.5px 3px rgba(255, 255, 255, 0.50),
+    0 4px 10px rgba(15, 23, 42, 0.06) !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.ds-chat-close-btn:hover,
+.ds-chat-minimize-btn:hover,
+.ds-chat-notes-btn:hover,
+.ds-notes-back-btn:hover {
+  transform: scale(1.06) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.98),
+    0 4px 12px rgba(230, 207, 165, 0.45) !important;
+}
+
+/* Pure Clear Glass Highlighted Quote Box with Champagne Gold Outline */
+.ds-highlighted-quote {
+  margin: 10px 14px 0 14px !important;
+  padding: 9px 12px !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.36) 0%, rgba(255, 255, 255, 0.16) 100%) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1.5px solid #e6cfa5 !important;
+  border-left: 3.5px solid #e6cfa5 !important;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.88),
+    inset 0 -1.5px 3px rgba(255, 255, 255, 0.48),
+    0 4px 12px rgba(15, 23, 42, 0.05) !important;
+  border-radius: 14px !important;
+  font-size: clamp(11px, 0.95vw, 12px) !important;
+  color: #1e293b !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  max-height: 12vh !important;
+  overflow-y: auto !important;
+  line-height: 1.45 !important;
+  flex-shrink: 0 !important;
+}
+
+.ds-chat-messages {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  background: transparent !important;
+  padding: clamp(10px, 1.5vh, 16px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 11px !important;
+  overscroll-behavior: contain !important;
+}
+
+/* Pure Colorless Frosted Glass Bubbles (Modeled on image_4e6fde.jpg) Outlined in Champagne Gold (#e6cfa5) */
+.ds-msg {
+  padding: 11px 14px !important;
+  border-radius: 18px !important;
+  font-size: clamp(12px, 1vw, 13.5px) !important;
+  line-height: 1.55 !important;
+  max-width: 94% !important;
+  word-wrap: break-word !important;
+  user-select: text !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+.ds-msg-assistant {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.16) 55%, rgba(255, 255, 255, 0.28) 100%) !important;
+  color: #0f172a !important;
+  align-self: flex-start !important;
+  border: 1.5px solid #e6cfa5 !important;
+  box-shadow:
+    inset 0 2px 3.5px rgba(255, 255, 255, 0.90),
+    inset 0 -2px 3.5px rgba(255, 255, 255, 0.55),
+    inset 1.5px 0 3px rgba(255, 255, 255, 0.60),
+    inset -1.5px 0 3px rgba(255, 255, 255, 0.60),
+    0 6px 16px rgba(15, 23, 42, 0.06) !important;
+}
+
+.ds-msg-user {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.46) 0%, rgba(255, 255, 255, 0.22) 55%, rgba(255, 255, 255, 0.34) 100%) !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  align-self: flex-end !important;
+  border: 1.5px solid #e6cfa5 !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.92),
+    inset 0 -2px 3.5px rgba(255, 255, 255, 0.60),
+    inset 1.5px 0 3px rgba(255, 255, 255, 0.65),
+    inset -1.5px 0 3px rgba(255, 255, 255, 0.65),
+    0 6px 16px rgba(15, 23, 42, 0.07) !important;
+}
+
+/* Pure Clear Glass Footer Input Area */
+.ds-chat-input-area {
+  padding: clamp(8px, 1.2vh, 12px) clamp(10px, 1.2vw, 14px) !important;
+  border-top: 1.5px solid #e6cfa5 !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.16) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: inset 0 1.5px 3px rgba(255, 255, 255, 0.85) !important;
+  display: flex !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Pure Clear Glass Prompt Input Field Outlined in Champagne Gold (#e6cfa5) */
+.ds-chat-input {
+  flex: 1 !important;
+  min-width: 0 !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.18) 100%) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1.5px solid #e6cfa5 !important;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.88),
+    inset 0 -1.5px 3px rgba(255, 255, 255, 0.50) !important;
+  border-radius: 13px !important;
+  padding: 8px 12px !important;
+  color: #0f172a !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  font-size: clamp(12px, 0.95vw, 13px) !important;
+  outline: none !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.ds-chat-input::placeholder {
+  color: #475569 !important;
+  opacity: 0.8 !important;
+}
+
+.ds-chat-input:focus {
+  border-color: #dfc599 !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.95),
+    0 0 10px rgba(230, 207, 165, 0.45) !important;
+}
+
+/* Pure Clear Glass Ask / Send Button Outlined in Champagne Gold (#e6cfa5) */
+.ds-chat-send-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  color: #0f172a !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85) !important;
+  border: 1.5px solid #e6cfa5 !important;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.92),
+    inset 0 -1.5px 3px rgba(255, 255, 255, 0.55),
+    0 4px 10px rgba(15, 23, 42, 0.06) !important;
+  border-radius: 13px !important;
+  padding: 0 16px !important;
+  font-weight: 700 !important;
+  font-size: 12.5px !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.ds-chat-send-btn:hover {
+  transform: translateY(-1px) scale(1.03) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.98),
+    0 4px 12px rgba(230, 207, 165, 0.45) !important;
+}
+
+/* "Add to Notes" Liquid Glass Pill Bubble Inside Chat Box (Identical 3D Dome Design to "Send Home") */
+#ds-add-to-notes-btn {
+  position: absolute !important;
+  min-width: 108px !important;
+  height: 30px !important;
+  padding: 0 16px !important;
+  border-radius: 9999px !important;
+  background: radial-gradient(ellipse 78% 72% at 50% 46%, rgba(255, 255, 255, 0.97) 0%, rgba(248, 250, 252, 0.91) 58%, rgba(226, 232, 240, 0.82) 86%, rgba(203, 213, 225, 0.90) 100%) !important;
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+  border: 1px solid rgba(30, 41, 59, 0.42) !important;
+  box-shadow:
+    inset 2.5px 1.5px 3.5px rgba(15, 23, 42, 0.42),
+    inset -2.5px -1.5px 3.5px rgba(15, 23, 42, 0.38),
+    inset 0 4px 7px rgba(255, 255, 255, 0.95),
+    inset 0 -3.5px 6px rgba(148, 163, 184, 0.48),
+    0 6px 16px rgba(15, 23, 42, 0.18) !important;
+  color: #1e2024 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  white-space: nowrap !important;
+  display: none;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 30 !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  transform: translateX(-50%);
+  transition: transform 0.14s ease, box-shadow 0.14s ease !important;
+}
+
+#ds-add-to-notes-btn.ds-visible {
+  display: flex !important;
+}
+
+#ds-add-to-notes-btn:hover {
+  transform: translateX(-50%) translateY(-1px) scale(1.04) !important;
+  box-shadow:
+    inset 2.5px 1.5px 3.5px rgba(15, 23, 42, 0.45),
+    inset -2.5px -1.5px 3.5px rgba(15, 23, 42, 0.40),
+    inset 0 4px 8px rgba(255, 255, 255, 1),
+    inset 0 -3.5px 6px rgba(148, 163, 184, 0.52),
+    0 8px 18px rgba(15, 23, 42, 0.24) !important;
+}
+
+/* Unwinding Scroll Notepad View (Unrolls from Top of Chat Box to Bottom, and Rewinds on Back Arrow) */
+#ds-chat-body-wrap {
+  position: relative !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+#ds-notepad-scroll-panel {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 0%;
+  z-index: 20 !important;
+  display: none;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 252, 245, 0.76) 100%) !important;
+  backdrop-filter: blur(22px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(145%) !important;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.92), 0 8px 24px rgba(15, 23, 42, 0.14) !important;
+}
+
+/* 3D Unrolling Scroll Cylinder Bar at the Bottom Leading Edge During Scroll Animation */
+.ds-scroll-roller {
+  height: 12px !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f3e5c8 45%, #e6cfa5 78%, #bfa36f 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1.5px solid #c8ad7d !important;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.22), inset 0 2px 3px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Lined Notepad Paper with Horizontal Ruled Lines */
+.ds-lined-notepad {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  margin: 10px 12px 6px 12px !important;
+  padding: 6px 14px 28px 34px !important;
+  border-radius: 14px !important;
+  border: 1.5px solid #e6cfa5 !important;
+  /* Horizontal ruled lines every 28px + classic vertical margin line at 24px */
+  background-color: rgba(255, 255, 255, 0.58) !important;
+  background-image:
+    linear-gradient(90deg, transparent 23px, rgba(230, 207, 165, 0.85) 23px, rgba(230, 207, 165, 0.85) 24.5px, transparent 24.5px),
+    repeating-linear-gradient(to bottom, transparent 0px, transparent 27px, rgba(148, 163, 184, 0.38) 27px, rgba(148, 163, 184, 0.38) 28px) !important;
+  background-attachment: local !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.90),
+    0 4px 12px rgba(15, 23, 42, 0.05) !important;
+  color: #0f172a !important;
+  font-size: 13px !important;
+  line-height: 28px !important;
+}
+
+.ds-note-item {
+  position: relative !important;
+  padding: 0 22px 0 2px !important;
+  margin: 0 !important;
+  line-height: 28px !important;
+  color: #0f172a !important;
+  font-weight: 500 !important;
+  word-wrap: break-word !important;
+}
+
+.ds-note-bullet {
+  color: #8a6421 !important;
+  font-weight: 800 !important;
+  margin-right: 6px !important;
+}
+
+.ds-note-delete-btn {
+  position: absolute !important;
+  right: 0 !important;
+  top: 4px !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(230, 207, 165, 0.75) !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  color: #64748b !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease !important;
+}
+
+.ds-note-item:hover .ds-note-delete-btn {
+  opacity: 1 !important;
+}
+
+.ds-note-delete-btn:hover {
+  color: #dc2626 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.ds-note-empty-hint {
+  color: #64748b !important;
+  font-style: italic !important;
+  line-height: 28px !important;
+  user-select: none !important;
+}
+
+/* Interactive Layman PDF Reader Overlay (Replaces opaque Adobe/Chrome <embed> so text selection & double-click work natively) */
+#ds-pdf-viewer-root {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483640 !important;
+  background: #2b2d31 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif !important;
+}
+
+#ds-pdf-toolbar {
+  height: 46px !important;
+  background: #1e1f22 !important;
+  border-bottom: 1px solid rgba(230, 207, 165, 0.35) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 18px !important;
+  color: #f8fafc !important;
+  font-size: 12.5px !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  padding-right: 96px !important; /* Leave room for the resting 3D brain in the top-right corner */
+}
+
+#ds-pdf-pages-viewport {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  padding: 24px 16px 60px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 22px !important;
+}
+
+.ds-pdf-page-card {
+  position: relative !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45) !important;
+  border-radius: 2px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+
+.ds-pdf-page-img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.ds-pdf-text-layer {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  line-height: 1.0 !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+.ds-pdf-text-layer span {
+  color: transparent !important;
+  position: absolute !important;
+  white-space: pre !important;
+  cursor: text !important;
+  transform-origin: 0% 0% !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+.ds-pdf-text-layer span::selection {
+  background: rgba(59, 130, 246, 0.32) !important;
+  color: transparent !important;
+}

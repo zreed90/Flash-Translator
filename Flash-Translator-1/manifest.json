@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "DeepSeek Layman's Terms Explainer",
+  "version": "1.2.0",
+  "description": "Highlight any text, click the 3D sphere icon, watch the emergent chat-box transition, and get an instant layman's explanation.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "file:///*",
+    "https://weu74viubx6gzhx2274vgereme0jnree.lambda-url.ap-southeast-2.on.aws/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true,
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true,
+      "js": ["pdf_main_bridge.js"],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    }
+  ],
+  "sandbox": {
+    "pages": ["pdf_sandbox.html"]
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';",
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://unpkg.com; worker-src 'self' blob: https://cdnjs.cloudflare.com https://unpkg.com;"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.png", "icons/*.png", "pdf_sandbox.html", "pdf_sandbox.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
