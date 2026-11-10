@@ -1,4 +1,4 @@
-# Layman's Intuition AI — Chrome Extension
+# Flash - A Layman's Translator — Chrome Extension
 
 An intuitive, interactive Google Chrome Extension that translates complex, technical, or academic writing into crystal-clear layman's terms, everyday analogies, and background context with an emergent 3D animated assistant.
 
@@ -14,7 +14,7 @@ An intuitive, interactive Google Chrome Extension that translates complex, techn
 
 1. **Download / Clone this repository**:
    ```bash
-   git clone https://github.com/your-username/layman-intuition-ai.git
+   git clone https://github.com/your-username/Flash-Translator-1.git
    ```
    *(Or click **Code** -> **Download ZIP** and extract it).*
 
@@ -28,12 +28,4 @@ An intuitive, interactive Google Chrome Extension that translates complex, techn
    - In `chrome://extensions/`, click **Details** on the extension card.
    - Toggle on **Allow access to file URLs** so the extension can explain local downloaded PDFs (`file:///`).
 
-## Security Architecture
 
-- **Zero Hardcoded Secrets**: DeepSeek API keys are stored exclusively in private AWS Lambda environment variables (`DEEPSEEK_API_KEY`).
-- **Token Protection**: Requests between the extension and AWS Lambda are verified via custom headers (`X-Extension-Token`).
-- **IP Rate Limiting**: Built-in protection prevents spam and unauthorized consumption.
-
-## License
-
-MIT License.
